@@ -5,10 +5,10 @@
   "main": "index.html",
   "scripts": {
     "test": "eslint js/**/*.js",
-    "build": "npm run optimize-js && npm run optimize-css && npm run optimize-html",
-    "optimize-js": "for file in js/**/*.js; do terser \"$file\" -o \"${file%.js}.min.js\" -c -m && mv \"${file%.js}.min.js\" \"$file\"; done",
+    "optimize-js": "for file in js/**/*.js; do terser \"$file\" -o \"$file\" --format compress=true,mangle=true; done",
     "optimize-css": "for file in css/*.css; do cleancss -o \"$file\" \"$file\"; done",
-    "optimize-html": "html-minifier-terser --collapse-whitespace --remove-comments --remove-optional-tags --remove-redundant-attributes --remove-script-type-attributes --remove-tag-whitespace --use-short-doctype --minify-css true --minify-js true -o index.html index.html"
+    "optimize-html": "html-minifier-terser --collapse-whitespace --remove-comments --remove-optional-tags --remove-redundant-attributes --remove-script-type-attributes --remove-tag-whitespace --use-short-doctype --minify-css true --minify-js true -o index.html index.html",
+    "build": "npm run optimize-js && npm run optimize-css && npm run optimize-html"
   },
   "repository": {
     "type": "git",
