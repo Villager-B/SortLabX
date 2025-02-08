@@ -35,7 +35,7 @@ jobs:
         run: |
           # Test JavaScript optimization
           for file in js/**/*.js; do
-            npx terser "$file" --format compress=true,mangle=true
+            npx terser "$file" --comments false --ecma 5 --beautify false
           done
           
           # Test CSS optimization
@@ -65,7 +65,7 @@ jobs:
         run: |
           # Optimize JavaScript files
           for file in js/**/*.js; do
-            npx terser "$file" -o "$file" --format compress=true,mangle=true
+            npx terser "$file" -o "$file" --comments false --ecma 5 --beautify false
           done
           
           # Optimize CSS files
