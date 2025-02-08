@@ -1,12 +1,14 @@
-# SortLabX
+# 📊 SortLabX
 
 A Sorting Algorithm Visualization Tool
 
-## Overview
+Visit: https://villager-b.github.io/SortLabX/
+
+## 🎯 Overview
 
 SortLabX is a web application designed to help users understand various sorting algorithms through interactive visualization. Users can observe the step-by-step process of different sorting algorithms through animations.
 
-## Features
+## ✨ Features
 
 - Visualization of 6 Sorting Algorithms
   - Bubble Sort
@@ -27,17 +29,17 @@ SortLabX is a web application designed to help users understand various sorting 
   - Algorithm Selection
   - Reset Functionality
 
-## Technology Stack
+## 🛠 Technology Stack
 
 - HTML5
 - CSS3 (Neumorphic UI)
 - JavaScript (ES6+)
 
-## Deployment
+## 🚀 Deployment
 
 This project is deployed using GitHub Pages.
 
-## Getting Started
+## 📖 Getting Started
 
 1. Select a sorting algorithm
 2. Click "Generate New Array" to create a new dataset (optional)
@@ -45,7 +47,7 @@ This project is deployed using GitHub Pages.
 4. Observe the sorting process through animation
 5. Click "Reset" to return to the initial state
 
-## Development
+## 💻 Development
 
 ### Prerequisites
 - Node.js 18 or later
@@ -66,10 +68,10 @@ cd SortLabX
 - Tests run on PR from `develop` to `main`
 - Automatic deployment on merge to `main`
 
-## License
+## 📄 License
 
 MIT License
 
-## Author
+## 👤 Author
 
 shimasan0x00 
