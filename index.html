@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SortLabX - Sorting Algorithm Visualization Tool</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>SortLabX</h1>
+    </header>
+    <main>
+        <div class="controls">
+            <select id="algorithm-select">
+                <option value="bubble">Bubble Sort</option>
+                <option value="selection">Selection Sort</option>
+                <option value="quick">Quick Sort</option>
+                <option value="insertion">Insertion Sort</option>
+                <option value="merge">Merge Sort</option>
+                <option value="heap">Heap Sort</option>
+            </select>
+            <button id="generate-array">Generate New Array</button>
+            <button id="start">Start</button>
+            <button id="reset">Reset</button>
+        </div>
+        <div class="stats">
+            <div class="stat-item">
+                <span>Steps:</span>
+                <span id="step-count">0</span>
+            </div>
+            <div class="stat-item">
+                <span>Comparisons:</span>
+                <span id="comparison-count">0</span>
+            </div>
+            <div class="stat-item">
+                <span>Swaps:</span>
+                <span id="swap-count">0</span>
+            </div>
+            <div class="stat-item">
+                <span>Time Complexity:</span>
+                <span id="complexity">-</span>
+            </div>
+        </div>
+        <div class="visualization-container">
+            <div id="array-container"></div>
+        </div>
+    </main>
+    <script src="js/algorithms/bubbleSort.js"></script>
+    <script src="js/algorithms/selectionSort.js"></script>
+    <script src="js/algorithms/quickSort.js"></script>
+    <script src="js/algorithms/insertionSort.js"></script>
+    <script src="js/algorithms/mergeSort.js"></script>
+    <script src="js/algorithms/heapSort.js"></script>
+    <script src="js/visualizer.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html> 

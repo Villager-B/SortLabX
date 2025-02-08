@@ -1,0 +1,88 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: write
+
+jobs:
+  test:
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.ref == 'develop'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test
+
+      - name: Test file optimization
+        run: |
+          # Test JavaScript optimization
+          for file in js/**/*.js; do
+            npx terser "$file" --comments none --ecma 5
+          done
+          
+          # Test CSS optimization
+          for file in css/*.css; do
+            npx cleancss "$file"
+          done
+          
+          # Test HTML optimization
+          npx html-minifier-terser --collapse-whitespace --remove-comments index.html
+
+  deploy:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build and optimize
+        run: |
+          # Optimize JavaScript files
+          for file in js/**/*.js; do
+            npx terser "$file" -o "$file" --comments none --ecma 5
+          done
+          
+          # Optimize CSS files
+          for file in css/*.css; do
+            npx cleancss -o "$file" "$file"
+          done
+          
+          # Optimize HTML file
+          npx html-minifier-terser --collapse-whitespace --remove-comments --remove-optional-tags --remove-redundant-attributes --remove-script-type-attributes --remove-tag-whitespace --use-short-doctype --minify-css true --minify-js true -o index.html index.html
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .
+          publish_branch: gh-pages
+          force_orphan: true
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          commit_message: 'Deploy to GitHub Pages' 
