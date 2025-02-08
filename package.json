@@ -1,0 +1,36 @@
+{
+  "name": "sortlabx",
+  "version": "1.0.0",
+  "description": "A Sorting Algorithm Visualization Tool",
+  "main": "index.html",
+  "scripts": {
+    "test": "eslint js/**/*.js",
+    "optimize-js": "for file in js/**/*.js; do terser \"$file\" -o \"$file\" --comments none --ecma 5; done",
+    "optimize-css": "for file in css/*.css; do cleancss -o \"$file\" \"$file\"; done",
+    "optimize-html": "html-minifier-terser --collapse-whitespace --remove-comments --remove-optional-tags --remove-redundant-attributes --remove-script-type-attributes --remove-tag-whitespace --use-short-doctype --minify-css true --minify-js true -o index.html index.html",
+    "build": "npm run optimize-js && npm run optimize-css && npm run optimize-html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shimasan0x00/SortLabX.git"
+  },
+  "keywords": [
+    "sorting",
+    "algorithms",
+    "visualization",
+    "education"
+  ],
+  "author": "shimasan0x00",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shimasan0x00/SortLabX/issues"
+  },
+  "homepage": "https://github.com/shimasan0x00/SortLabX#readme",
+  "devDependencies": {
+    "eslint": "^8.56.0",
+    "prettier": "^3.2.5",
+    "terser": "^5.27.0",
+    "clean-css-cli": "^5.6.3",
+    "html-minifier-terser": "^7.2.0"
+  }
+} 
